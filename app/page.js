@@ -101,7 +101,8 @@ export default function Home() {
           layout="fill"
           priority
         />
-        <div className="absolute inset-0 flex items-center justify-center text-6xl sm:text-8xl lg:text-[10vw] font-bold text-center">
+        <div className="absolute inset-0 flex items-center justify-center text-4xl sm:text-8xl lg:text-[10vw] font-bold text-center">
+          
           <p className="text-white coming-soon-text ">
             Coming Soon
           </p>
@@ -109,6 +110,7 @@ export default function Home() {
           <span  className="dot1">.</span>
           <span className="dot2">.</span>
           <span className="dot3">.</span>
+          
         </div>
       </main>
     </div>

@@ -1,11 +1,14 @@
 import localFont from "next/font/local";
 import "./globals.css";
 
+// the fonts
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
+// geistMono locals
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",

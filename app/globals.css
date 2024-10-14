@@ -7,6 +7,9 @@
   --foreground: #171717;
 }
 
+/*
+  prefers-color-shceme for making dark and light themes
+*/
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
