@@ -15,8 +15,7 @@ export default function Home() {
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        ease: "back.out(1.7)",
+        duration: 0.5,
       });
 
     timeline1.fromTo(
@@ -25,92 +24,93 @@ export default function Home() {
       {
         opacity: 1,
         x: 0,
-        duration: 0.8, 
-        ease: "back.out(1.7)",
+        duration: 0.5, 
+        
       }
     );
 
     timeline1.fromTo(
-      ".coming-soon-text",
-      { opacity: 0, scale: 0.3 },
+      ".darya-cargo-text",
+      { opacity: 0, y: 100 },
       {
         opacity: 1,
         scale: 1,
-        duration: 1.5, 
-        ease: "bounce.out",
+        y: 0,
+        duration: .5, 
       }
       
     );
 
     timeline1.fromTo(
-      ".dot1",
-      { opacity: 0, scale: 0.3 },
+      ".big-text",
+      { opacity: 0, y: -100 },
       {
         opacity: 1,
         scale: 1,
         duration: 1, 
-        ease: "bounce.out",
+        y: 1
       }
 
     );
 
     timeline1.fromTo(
-      ".dot2",
-      { opacity: 0, scale: 0.3 },
+      ".coming-soon-text",
+      { opacity: 0, y: -100 },
       {
         opacity: 1,
         scale: 1,
         duration: 1, 
-        ease: "bounce.out",
+        y: 1
       }
-
-    );
-
-    timeline1.fromTo(
-      ".dot3",
-      { opacity: 0, scale: 0.3 },
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 1, 
-        ease: "bounce.out",
-      }
-
     );
   }, [])
   
   return (
     <div className="font-[family-name:var(--font-geist-sans)]">
-
+      
       <main className="relative w-full h-screen">
-        
-        <div className=" .logo">
+      
+        <div className="logo absolute top-4 left-4  z-20">
+      
           <Image
-            className="absolute logo top-4 h-[60px] w-[60px] left-4 md:w-[100px] md:h-[100px] z-[99] rounded-full"
+            className=" h-[70px] w-[70px]  md:w-[120px] md:h-[120px]  rounded-full"
             src={Logo}
             alt="Cargo Image"
             priority
           />
         </div>
 
-
         <Image
-          className="md:object-cover object-cover background-image"
+          className="md:object-cover blur-[1px] object-cover background-image"
           src={cargoImage}
           alt="Cargo Image"
           layout="fill"
           priority
         />
-        <div className="absolute inset-0 flex items-center justify-center text-4xl sm:text-8xl lg:text-[10vw] font-bold text-center">
+
+        <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+
+        <div className="absolute w-[90%] mx-auto inset-0 flex flex-col items-center justify-center  text-center z-20">
           
-          <p className="text-white coming-soon-text ">
+        <div className="flex flex-col items-center justify-center text-center">
+          
+          <h1 className="text-white darya-cargo-text text-5xl sm:text-8xl lg:text-[10vw] font-extrabold mt-6">
+            Darya Cargo
+          </h1>
+          
+        </div>
+
+
+          <div>
+            <p className="text-lg big-text sm:text-xl lg:text-2xl text-gray-300 leading-relaxed mt-4">
+              We are a leading cargo company based in Afghanistan, providing comprehensive transportation solutions for domestic and international markets. Our services include freight forwarding, customs clearance, and logistics management. With a strong partner network and a commitment to excellence, we streamline supply chains and enable businesses to connect with global markets, ensuring reliable and timely deliveries.
+            </p>
+            
+          </div>
+          
+          <h2 className="text-gray-200 coming-soon-text mt-10 text-3xl sm:text-5xl lg:text-6xl tracking-wide uppercase">
             Coming Soon
-          </p>
-          
-          <span  className="dot1">.</span>
-          <span className="dot2">.</span>
-          <span className="dot3">.</span>
-          
+          </h2>
         </div>
       </main>
     </div>
