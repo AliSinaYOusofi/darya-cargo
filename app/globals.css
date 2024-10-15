@@ -10,58 +10,13 @@
 /*
   prefers-color-shceme for making dark and light themes
 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+[data-theme='dark'] {
+  --background: black;
+  --foreground: white;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-}
-
-
-@keyframes move-up {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes move-down {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.dot1 {
-  animation: move-up 1s ease-in-out infinite;
-}
-
-.dot2 {
-  animation: move-up 1s ease-in-out infinite 0.2s; /* Delayed */
-}
-
-.dot3 {
-  animation: move-up 1s ease-in-out infinite 0.4s; /* More delayed */
 }
