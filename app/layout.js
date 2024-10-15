@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
-
+import { ThemeProvider } from "next-themes";
 // the fonts
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -37,9 +37,18 @@ export default function RootLayout({ children }) {
         />
         <meta name="author" content="Darya Cargo" />
         <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Darya Cargo - Reliable International Shipping & Logistics Solutions" />
+        <meta property="og:description" content="Darya Cargo offers fast, reliable, and affordable international shipping and logistics services." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://daryacargo.com" /> 
+        <meta property="og:image" content="/public/images/logo.jpg" />
       </head>
+
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
+      
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
