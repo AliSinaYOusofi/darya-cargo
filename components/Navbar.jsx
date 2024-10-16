@@ -46,7 +46,7 @@ export default function Navbar() {
                   className={`relative ${pathname === "/about" ? "text-[#015049] underline" : ""} `}
                   href="/about"
                 >
-                  About
+                  About Us
                   <span className="block h-0.5 w-0 bg-gray-400 group-hover:w-full transition-all duration-300 ease-in-out"></span>
                 </a>
               </li>
@@ -172,7 +172,7 @@ const MobileNav = ({ open }) => {
     <ul className="xl:hidden font-[family-name:var(--font-geist-sans)] w-full gap-y-6 text-center text-3xl flex flex-col justify-center mb-10 divide-gray-400 items-center px-4 mx-auto  font-heading space-y-4">
       {[
         { href: "/", icon: CiHome, text: "Home" },
-        { href: "/about", icon: CiCircleInfo, text: "About" },
+        { href: "/about", icon: CiCircleInfo, text: "About Us" },
         { href: "/contact", icon: CiHeadphones, text: "Contact" },
       ].map(({ href, icon: Icon, text }, index) => (
         <li className="w-full mt-4" key={index}>

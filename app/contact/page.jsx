@@ -1,11 +1,6 @@
 import React from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa';
 
-export const metadata = {
-    title: "Darya Cargo - Reliable International Shipping & Logistics Solutions",
-    description: "Darya Cargo offers fast, reliable, and affordable international shipping and logistics services. We specialize in cargo transport, freight forwarding, and supply chain management worldwide. Contact us for inquiries!",
-    keywords: "Darya Cargo, international shipping, logistics, contact, freight forwarding, cargo transport, supply chain management",
-};
 
 export default function Page() {
     return (
@@ -54,11 +49,11 @@ export default function Page() {
                     </div> */}
                 </div>
 
-                <div className="mt-16 text-center">
+                {/* <div className="mt-16 text-center">
                     <p className="text-lg md:text-xl">
                         We're available for any inquiries. Reach out via email, phone, or leave us a message here.
                     </p>
-                </div>
+                </div> */}
             </div>
         </div>
     );
