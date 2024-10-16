@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image";
-import cargoImage from '/public/images/WhatsApp Image 2024-10-13 at 13.35.50_cc0eb8ac.jpg'
 import Logo from '/public/images/logo.jpg'
 import gsap from "gsap";
 import { useEffect } from "react";
