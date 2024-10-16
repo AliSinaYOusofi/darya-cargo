@@ -8,12 +8,14 @@ import { FaHome, FaThLarge, FaBoxes, FaPhoneAlt, FaHeart } from "react-icons/fa"
 import { CiHeadphones } from "react-icons/ci";
 import { CiCircleInfo } from "react-icons/ci";
 import { CiHome } from "react-icons/ci";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
 
   const { theme, setTheme } = useTheme()
   const [isMobileNavOpen, setIsMobileNavOpen] = React.useState(false);
-  console.log(theme)
+  const pathname = usePathname();
+
   return (
     <>
       <section className="relative mx-auto logo">
@@ -34,14 +36,14 @@ export default function Navbar() {
             {/* Nav Links */}
             <ul className="hidden md:flex px-4 mx-auto  font-heading space-x-12">
               <li className="group">
-                <a className={`relative  `} href="/">
+                <a className={`relative ${pathname === "/" ? "text-[#015049] underline" : ""}`} href="/">
                   Home
                   <span className="block h-0.5 w-0 bg-gray-400 group-hover:w-full transition-all duration-300 ease-in-out"></span>
                 </a>
               </li>
               <li className="group">
                 <a
-                  className={`relative `}
+                  className={`relative ${pathname === "/about" ? "text-[#015049] underline" : ""} `}
                   href="/about"
                 >
                   About
@@ -50,7 +52,7 @@ export default function Navbar() {
               </li>
               <li className="group">
                 <a
-                  className={`relative `}
+                  className={`relative ${pathname === "/contact" ? "text-[#015049] underline" : ""} `}
                   href="/contact"
                 >
                   Contact
