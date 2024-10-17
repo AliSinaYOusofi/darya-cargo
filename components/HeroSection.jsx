@@ -10,7 +10,7 @@ export default function HeroSection() {
             <div className="w-[90%] mx-auto">
                 
                 <Image
-                    className="md:h-fit h-[500px] background-image rounded-lg"
+                    className="md:h-fit h-[500px] object-cover md:object-contain background-image rounded-lg"
                     src={cargoImage}
                     alt="Cargo Image"
                     priority
