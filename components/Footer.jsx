@@ -20,8 +20,8 @@ export default function Footer() {
                     </a>
                 </div>
 
-                <ul className="text-center">
-                    <li className="inline-block relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:content-['/'] before:text-gray-300">
+                <ul className="text-center ">
+                    <li className="inline-block  relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:content-['/'] before:text-gray-300">
                         <a className="inline-flex gap-x-2 text-sm  focus:outline-none focus:text-gray-800" href="/">
                             Home
                         </a>
@@ -38,7 +38,7 @@ export default function Footer() {
                     </li>
                 </ul>
 
-                <div className="flex justify-center space-x-6">
+                <div className="flex justify-center space-x-6 invisible">
                     <a href="/about" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                         <FaFacebook className="transition-all duration-300 hover:-translate-y-1" size={24} />
                     </a>

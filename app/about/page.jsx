@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaTruck, FaGlobe, FaHandshake, FaIndustry } from 'react-icons/fa';
-import { GiCargoShip } from "react-icons/gi";
+// import { FaTruck, FaGlobe, FaHandshake, FaIndustry } from 'react-icons/fa';
+// import { GiCargoShip } from "react-icons/gi";
 
 export const metadata = {
     title: "Darya Cargo - Reliable International Shipping & Logistics Solutions",
