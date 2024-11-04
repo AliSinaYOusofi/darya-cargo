@@ -14,6 +14,7 @@ import CargoStats from "@/components/Stats";
 import { useGSAP } from "@gsap/react";
 import TrackYourShipments from "@/components/TrackShipment";
 import AnimatedText from "@/components/RiverDarya";
+import MissionAndVision from "@/components/MissionVision";
 gsap.registerPlugin(ScrollTrigger);
 const services = [
   { icon: <FaShippingFast className="text-blue-600" />, header: 'Express Shipping', description: 'Fast and reliable express shipping for urgent deliveries worldwide.' },
@@ -66,27 +67,27 @@ export default function Home() {
 
         <section className="py-12 w-[90%] mx-auto">
           <div ref={servicesRef} className="container mx-auto px-4">
-            <h2  className="services text-3xl md:text-9xl font-semibold text-center mb-20 text-white mt-20">Our Services</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <h2  className="services text-3xl md:text-9xl font-semibold text-center mb-20 text-gray-800 mt-20">Services</h2>
+            <div className="grid service grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {services.map((service, index) => (
-                  <div className="service">
-                    <ServiceCard
-                      key={index}
-                      icon={service.icon}
-                      header={service.header}
-                      description={service.description}
-                      
-                    />
-                  </div>
-                
+                <div className="service">
+                  <ServiceCard
+                    key={index}
+                    icon={service.icon}
+                    header={service.header}
+                    description={service.description}
+                    
+                  />
+                </div>
               ))}
             </div>
           </div>
         </section>
-
+        
         <TrackYourShipments />
 
         <CargoStats />
+        <MissionAndVision />
 
         <AnimatedText />
         <Footer />

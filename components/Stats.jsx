@@ -29,7 +29,7 @@ const CargoStats = () => {
     <div className="stats mx-auto w-[90%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 p-10 rounded-xl">
       <div className="stat bg-gradient-to-br from-[#064f47] to-[#075c52] rounded-lg p-8 flex flex-col items-center transition duration-300 ease-in-out hover:shadow-lg hover:shadow-[#0a6d61]/50 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')] opacity-10 blur-sm"></div>
-        <div className="stat-figure text-teal-300 text-7xl mb-3 z-10">
+        <div className="stat-figure text-[#00504A] bg-white p-2 rounded-full text-7xl mb-3 z-10">
           <FaShip />
         </div>
         <div className="stat-title text-xl font-bold text-white z-10">
@@ -45,7 +45,7 @@ const CargoStats = () => {
 
       <div className="stat bg-gradient-to-br from-[#064f47] to-[#075c52] rounded-lg p-8 flex flex-col items-center transition duration-300 ease-in-out hover:shadow-lg hover:shadow-[#0a6d61]/50 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')] opacity-10 blur-sm"></div>
-        <div className="stat-figure text-green-300 text-7xl mb-3 z-10">
+        <div className="stat-figure text-[#00504A] bg-white p-2 rounded-full text-7xl mb-3 z-10">
           <FaBoxOpen />
         </div>
         <div className="stat-title text-xl font-bold text-white z-10">
@@ -59,7 +59,7 @@ const CargoStats = () => {
 
       <div className="stat bg-gradient-to-br from-[#064f47] to-[#075c52] rounded-lg p-8 flex flex-col items-center transition duration-300 ease-in-out hover:shadow-lg hover:shadow-[#0a6d61]/50 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')] opacity-10 blur-sm"></div>
-        <div className="stat-figure text-orange-300 text-7xl mb-3 z-10">
+        <div className="stat-figure text-[#00504A] bg-white p-2 rounded-full text-7xl mb-3 z-10">
           <FaUsers />
         </div>
         <div className="stat-title text-xl font-bold text-white z-10">
@@ -75,7 +75,7 @@ const CargoStats = () => {
 
       <div className="stat bg-gradient-to-br from-[#064f47] to-[#075c52] rounded-lg p-8 flex flex-col items-center transition duration-300 ease-in-out hover:shadow-lg hover:shadow-[#0a6d61]/50 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')] opacity-10 blur-sm"></div>
-        <div className="stat-figure text-red-300 text-7xl mb-3 z-10">
+        <div className="stat-figure text-[#00504A] bg-white p-2 rounded-full text-7xl mb-3 z-10">
           <FaGlobe />
         </div>
         <div className="stat-title text-xl font-bold text-white z-10">

@@ -12,7 +12,7 @@ import { usePathname } from "next/navigation";
 
 export default function Navbar() {
 
-  const { theme, setTheme } = useTheme()
+  // const { theme, setTheme } = useTheme()
   const [isMobileNavOpen, setIsMobileNavOpen] = React.useState(false);
   const pathname = usePathname();
 
@@ -21,10 +21,9 @@ export default function Navbar() {
       <section className="relative mx-auto logo">
         {/* navbar */}
         <nav
-          className={`flex "
-          }  justify-between  w-screen`}
+          className={`flex justify-between w-screen bg-[#ffc100]`}
         >
-          <div className="px-5 xl:px-12 py-6 flex w-full items-center">
+          <div className="px-5 xl:px-12 py-6 flex justify-between w-full items-center">
             <Link className="text-3xl font-heading" href="#">
               <Image
                 className=" h-[40px] w-[40px] logo  md:w-[70px] md:h-[70px]  rounded-full"
@@ -33,12 +32,12 @@ export default function Navbar() {
                 priority
               />
             </Link>
-            {/* Nav Links */}
-            <ul className="hidden md:flex px-4 mx-auto  font-heading space-x-12">
+            
+            <ul className="hidden md:flex px-4  font-heading space-x-12">
               <li className="group">
                 <a className={`relative ${pathname === "/" ? "underline" : ""}`} href="/">
                   Home
-                  <span className="block h-0.5 w-0 bg-gray-400 group-hover:w-full transition-all duration-300 ease-in-out"></span>
+                  <span className="block h-0.5 w-0 bg-gray-100 group-hover:w-full transition-all duration-300 ease-in-out"></span>
                 </a>
               </li>
               <li className="group">
@@ -47,7 +46,7 @@ export default function Navbar() {
                   href="/about"
                 >
                   About Us
-                  <span className="block h-0.5 w-0 bg-gray-400 group-hover:w-full transition-all duration-300 ease-in-out"></span>
+                  <span className="block h-0.5 w-0 bg-gray-100 group-hover:w-full transition-all duration-300 ease-in-out"></span>
                 </a>
               </li>
               <li className="group">
@@ -56,18 +55,18 @@ export default function Navbar() {
                   href="/contact"
                 >
                   Contact
-                  <span className="block h-0.5 w-0 bg-gray-400 group-hover:w-full transition-all duration-300 ease-in-out"></span>
+                  <span className="block h-0.5 w-0 bg-gray-100 group-hover:w-full transition-all duration-300 ease-in-out"></span>
                 </a>
               </li>
             </ul>
 
             {/* Header Icons */}
-            <div className="hidden xl:flex items-center space-x-5">
+            
               
 
               {/* Sign In / Register */}
 
-              <div className=" flex mr-6 items-center" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+              {/* <div className=" flex mr-6 items-center" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
                 {theme === "light" ? (
                   <button className="">
                     <svg
@@ -103,11 +102,11 @@ export default function Navbar() {
                     </svg>
                   </button>
                 )}
-              </div>
-            </div>
+              </div> */}
+            
           </div>
 
-          <div
+          {/* <div
             className="xl:hidden flex mr-6 items-center"
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
           >
@@ -146,7 +145,7 @@ export default function Navbar() {
                 </svg>
               </button>
             )}
-          </div>
+          </div> */}
 
           
 
@@ -166,10 +165,10 @@ export default function Navbar() {
 
 const MobileNav = ({ open }) => {
   const iconHover =
-    "transition-transform duration-300 group-hover:-translate-y-1";
+    "transition-transform duration-300 group-hover:-translate-y-1 ";
 
   return (
-    <ul className="xl:hidden font-[family-name:var(--font-geist-sans)] w-full gap-y-6 text-center text-3xl flex flex-col justify-center mb-10 divide-gray-400 items-center px-4 mx-auto  font-heading space-y-4">
+    <ul className="xl:hidden bg-[#ffc100] font-[family-name:var(--font-geist-sans)] w-full gap-y-6 text-center text-3xl flex flex-col justify-center mb-10 divide-gray-400 items-center px-4 mx-auto  font-heading space-y-4">
       {[
         { href: "/", icon: CiHome, text: "Home" },
         { href: "/about", icon: CiCircleInfo, text: "About Us" },

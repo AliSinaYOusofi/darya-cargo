@@ -54,9 +54,9 @@ const TrackYourShipments = () => {
   }, []);
 
   return (
-    <div className="relative h-screen flex flex-col justify-center items-center text-center space-y-6">
-      <h2 className="title text-3xl md:text-8xl font-bold tracking-wider mb-4 text-white">Track Your Shipments</h2>
-      <p className="subtitle text-xl md:text-3xl font-medium mx-auto mb-8 text-white">
+    <div className="relative h-fit mt-20 border-2 border-gray-300 p-10 mx-auto w-[90%] rounded-md flex flex-col justify-center items-center text-center space-y-6">
+      <h2 className="title text-3xl md:text-8xl font-bold tracking-wider mb-4 text-black">Track Your Shipments</h2>
+      <p className="subtitle text-xl md:text-3xl font-medium mx-auto mb-8 text-black">
         Choose a provider below to track your shipment’s journey in real-time.
       </p>
       <div className="flex flex-col justify-center items-center space-y-4">
@@ -64,7 +64,7 @@ const TrackYourShipments = () => {
           href="https://www.ups.com/track"
           target="_blank"
           rel="noopener noreferrer"
-          className="tracking-button flex items-center border-2 border-white text-white text-lg font-semibold py-3 px-6 rounded-md shadow-lg transform transition duration-300 hover:-translate-y-1"
+          className="tracking-button flex items-center text-black text-lg font-semibold py-3 px-6 rounded-md shadow-lg transform transition duration-300 hover:-translate-y-1"
         >
           <Image
             src="https://seeklogo.com/images/U/ups-united-parcel-service-logo-DC08EF8E0D-seeklogo.com.png"
@@ -79,7 +79,7 @@ const TrackYourShipments = () => {
           href="https://www.turkishcargo.com.tr/en/online-services/track-your-shipments"
           target="_blank"
           rel="noopener noreferrer"
-          className="tracking-button flex items-center border-2 border-white text-white text-lg font-semibold py-3 px-6 rounded-md shadow-lg transform transition duration-300 hover:-translate-y-1"
+          className="tracking-button flex items-center text-black text-lg font-semibold py-3 px-6 rounded-md shadow-lg transform transition duration-300 hover:-translate-y-1"
         >
           <Image
             src="https://seeklogo.com/images/T/turkish-airlines-logo-25BACC2D0C-seeklogo.com.png"
