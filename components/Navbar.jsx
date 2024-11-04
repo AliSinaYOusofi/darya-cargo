@@ -36,14 +36,14 @@ export default function Navbar() {
             {/* Nav Links */}
             <ul className="hidden md:flex px-4 mx-auto  font-heading space-x-12">
               <li className="group">
-                <a className={`relative ${pathname === "/" ? "text-[#015049] underline" : ""}`} href="/">
+                <a className={`relative ${pathname === "/" ? "underline" : ""}`} href="/">
                   Home
                   <span className="block h-0.5 w-0 bg-gray-400 group-hover:w-full transition-all duration-300 ease-in-out"></span>
                 </a>
               </li>
               <li className="group">
                 <a
-                  className={`relative ${pathname === "/about" ? "text-[#015049] underline" : ""} `}
+                  className={`relative ${pathname === "/about" ? "underline" : ""} `}
                   href="/about"
                 >
                   About Us
@@ -52,7 +52,7 @@ export default function Navbar() {
               </li>
               <li className="group">
                 <a
-                  className={`relative ${pathname === "/contact" ? "text-[#015049] underline" : ""} `}
+                  className={`relative ${pathname === "/contact" ? "underline " : ""} `}
                   href="/contact"
                 >
                   Contact
