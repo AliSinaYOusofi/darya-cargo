@@ -9,22 +9,23 @@ gsap.registerPlugin(ScrollTrigger);
 const CargoStats = () => {
   
   useGSAP(() => {
-      const boxes = gsap.utils.toArray(".stat");
-      boxes.forEach((box) => {
-        gsap.from(box, {
-          opacity: 0,
-          y: 100,
-          duration: 1,
-          scrollTrigger: {
-            trigger: box,
-            start: "bottom bottom",
-            end: "bottom bottom",
-            scrub: true,
-            toggleActions: "play pause resume reset",
-          },
-        });
+    const boxes = gsap.utils.toArray(".stat");
+    boxes.forEach((box) => {
+      gsap.from(box, {
+        opacity: 0,
+        y: 100,
+        duration: 1,
+        scrollTrigger: {
+          trigger: box,
+          start: "bottom bottom",
+          end: "bottom bottom",
+          scrub: true,
+          toggleActions: "play pause resume reset",
+        },
       });
-    }, []);
+    });
+  }, []);
+  
   return (
     <div className="stats mx-auto w-[90%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 p-10 rounded-xl">
       <div className="stat bg-gradient-to-br from-[#064f47] to-[#075c52] rounded-lg p-8 flex flex-col items-center transition duration-300 ease-in-out hover:shadow-lg hover:shadow-[#0a6d61]/50 relative overflow-hidden">

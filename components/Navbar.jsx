@@ -3,7 +3,7 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import Hamburger from "hamburger-react";
 import Image from "next/image";
-import Logo from "/public/images/logo.jpg";
+import Logo from "../public/images/WhatsApp Image 2024-10-13 at 13.36.48_3da1269d.jpg";
 import { FaHome, FaThLarge, FaBoxes, FaPhoneAlt, FaHeart } from "react-icons/fa";
 import { CiHeadphones } from "react-icons/ci";
 import { CiCircleInfo } from "react-icons/ci";
