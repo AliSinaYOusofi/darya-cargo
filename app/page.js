@@ -57,6 +57,17 @@ export default function Home() {
         },
       });
     });
+
+    gsap.from(".services", {
+      opacity: 0,
+      y: -150,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".services",
+        scrub: true,
+        toggleActions: "play none none reverse",
+      },
+    });
   }, []);
 
   return (
