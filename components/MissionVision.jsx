@@ -12,15 +12,14 @@ gsap.registerPlugin(ScrollTrigger);
 const MissionAndVision = () => {
 
     useGSAP(() => {
-        // Animate the title
         gsap.from(".title1", {
           opacity: 0,
           y: -150,
           duration: 1,
           scrollTrigger: {
-            trigger: ".title",
-            start: "top 80%", // Start animation when the title is 80% from the top of the viewport
-            toggleActions: "play none none reverse", // Control the animation play state
+            trigger: ".title1",
+            scrub: true,
+            toggleActions: "play none none reverse",
           },
         });
     
@@ -31,7 +30,7 @@ const MissionAndVision = () => {
           duration: 1,
           scrollTrigger: {
             trigger: ".subtitle1",
-            start: "top 80%", // Start animation when the subtitle is 80% from the top of the viewport
+            
             toggleActions: "play none none reverse", // Control the animation play state
             scrub: true
           },
@@ -43,7 +42,7 @@ const MissionAndVision = () => {
           duration: 1,
           scrollTrigger: {
             trigger: ".subtitle2",
-            start: "top 80%", // Start animation when the subtitle is 80% from the top of the viewport
+            
             toggleActions: "play none none reverse", // Control the animation play state
             scrub: true
           },
@@ -53,7 +52,7 @@ const MissionAndVision = () => {
 
     return (
         <section className="relative h-fit mt-20 border-2 border-gray-300 p-10 mx-auto w-[90%] rounded-md flex flex-col justify-center items-center text-center space-y-6">
-            <div className=" w-40 animate-move-across">
+            <div className=" w-20 absolute -top-8 -right-4 rotate-[45deg]">
                 <Image
                     src={containers}
                     alt="Moving Container Ship"
