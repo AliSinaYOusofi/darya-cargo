@@ -1,93 +1,69 @@
 "use client";
-import React, { useEffect } from "react";
-import { FaShip, FaBoxOpen, FaUsers, FaGlobe } from "react-icons/fa";
+
+import React from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const stats = [
+  { value: 1000, suffix: "+", label: "Shipments delivered", note: "Across air, sea and land in 2024" },
+  { value: 2000, suffix: "+", label: "Packages handled", note: "Packed and processed last year" },
+  { value: 500, suffix: "", label: "Active clients", note: "Businesses that ship with us" },
+  { value: 45, suffix: "+", label: "Countries served", note: "Through our partner network" },
+];
+
 const CargoStats = () => {
-  
   useGSAP(() => {
-    const boxes = gsap.utils.toArray(".stat");
-    boxes.forEach((box) => {
-      gsap.from(box, {
-        opacity: 0,
-        y: 100,
-        duration: 1,
-        scrollTrigger: {
-          trigger: box,
-          start: "bottom bottom",
-          end: "bottom bottom",
-          scrub: true,
-          toggleActions: "play pause resume reset",
-        },
+    const mm = gsap.matchMedia();
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.utils.toArray(".stat-value").forEach((el) => {
+        const target = Number(el.dataset.target);
+        const counter = { v: 0 };
+        gsap.to(counter, {
+          v: target,
+          duration: 1.8,
+          ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 85%", once: true },
+          onUpdate: () => {
+            el.textContent = Math.round(counter.v).toLocaleString();
+          },
+        });
       });
     });
   }, []);
-  
+
   return (
-    <div className="stats mx-auto w-[90%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 p-10 rounded-xl">
-      <div className="stat bg-gradient-to-br from-[#064f47] to-[#075c52] rounded-lg p-8 flex flex-col items-center transition duration-300 ease-in-out hover:shadow-lg hover:shadow-[#0a6d61]/50 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')] opacity-10 blur-sm"></div>
-        <div className="stat-figure text-[#00504A] bg-white p-2 rounded-full text-7xl mb-3 z-10">
-          <FaShip />
+    <section className="bg-brand-950">
+      <div className="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
+        <div className="max-w-2xl" data-reveal>
+          <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-accent md:text-xs">
+            By the numbers
+          </p>
+          <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+            Trusted with cargo, measured in miles.
+          </h2>
         </div>
-        <div className="stat-title text-xl font-bold text-white z-10">
-          Shipments Delivered
-        </div>
-        <div className="stat-value text-3xl font-extrabold text-white z-10">
-          1000+
-        </div>
-        <div className="stat-desc text-white mt-2 z-10">
-          Total shipments in 2024
-        </div>
-      </div>
 
-      <div className="stat bg-gradient-to-br from-[#064f47] to-[#075c52] rounded-lg p-8 flex flex-col items-center transition duration-300 ease-in-out hover:shadow-lg hover:shadow-[#0a6d61]/50 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')] opacity-10 blur-sm"></div>
-        <div className="stat-figure text-[#00504A] bg-white p-2 rounded-full text-7xl mb-3 z-10">
-          <FaBoxOpen />
-        </div>
-        <div className="stat-title text-xl font-bold text-white z-10">
-          Packages Handled
-        </div>
-        <div className="stat-value text-3xl font-extrabold text-white z-10">
-          2000+
-        </div>
-        <div className="stat-desc text-white mt-2 z-10">Over the last year</div>
+        <dl className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-white/10 sm:grid-cols-2 lg:grid-cols-4" data-reveal-group>
+          {stats.map(({ value, suffix, label, note }) => (
+            <div key={label} className="bg-brand-950 p-8 md:p-10">
+              <dd className="font-mono text-4xl font-semibold tracking-tight text-white md:text-5xl">
+                <span className="stat-value" data-target={value}>
+                  0
+                </span>
+                <span className="text-accent">{suffix}</span>
+              </dd>
+              <dt className="mt-4 text-sm font-semibold uppercase tracking-[0.15em] text-white/80">
+                {label}
+              </dt>
+              <p className="mt-2 text-sm leading-relaxed text-white/45">{note}</p>
+            </div>
+          ))}
+        </dl>
       </div>
-
-      <div className="stat bg-gradient-to-br from-[#064f47] to-[#075c52] rounded-lg p-8 flex flex-col items-center transition duration-300 ease-in-out hover:shadow-lg hover:shadow-[#0a6d61]/50 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')] opacity-10 blur-sm"></div>
-        <div className="stat-figure text-[#00504A] bg-white p-2 rounded-full text-7xl mb-3 z-10">
-          <FaUsers />
-        </div>
-        <div className="stat-title text-xl font-bold text-white z-10">
-          Active Clients
-        </div>
-        <div className="stat-value text-3xl font-extrabold text-white z-10">
-          500
-        </div>
-        <div className="stat-desc text-white mt-2 z-10">
-          Registered users on our platform
-        </div>
-      </div>
-
-      <div className="stat bg-gradient-to-br from-[#064f47] to-[#075c52] rounded-lg p-8 flex flex-col items-center transition duration-300 ease-in-out hover:shadow-lg hover:shadow-[#0a6d61]/50 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')] opacity-10 blur-sm"></div>
-        <div className="stat-figure text-[#00504A] bg-white p-2 rounded-full text-7xl mb-3 z-10">
-          <FaGlobe />
-        </div>
-        <div className="stat-title text-xl font-bold text-white z-10">
-          Global Reach
-        </div>
-        <div className="stat-value text-3xl font-extrabold text-white z-10">
-          45+
-        </div>
-        <div className="stat-desc text-white mt-2 z-10">Countries served</div>
-      </div>
-    </div>
+    </section>
   );
 };
 

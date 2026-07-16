@@ -1,97 +1,67 @@
-"use client"; // This line is for Next.js 13+ app directory usage
-import React from "react";
-import Image from "next/image";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+"use client";
 
-gsap.registerPlugin(ScrollTrigger);
+import React from "react";
+import { FaTruck, FaPlane } from "react-icons/fa";
+import { HiArrowUpRight } from "react-icons/hi2";
+
+const carriers = [
+  {
+    name: "UPS",
+    description: "Track parcels and express deliveries worldwide.",
+    href: "https://www.ups.com/track",
+    icon: <FaTruck />,
+  },
+  {
+    name: "Turkish Airlines Cargo",
+    description: "Follow air freight shipments across the network.",
+    href: "https://www.turkishcargo.com.tr/en/online-services/track-your-shipments",
+    icon: <FaPlane />,
+  },
+];
 
 const TrackYourShipments = () => {
-  // Use the useGSAP hook to animate buttons and text on scroll
-  useGSAP(() => {
-    // Animate the title
-    gsap.from(".title", {
-      opacity: 0,
-      y: -50,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".title",
-        start: "top 80%", // Start animation when the title is 80% from the top of the viewport
-        toggleActions: "play none none reverse", // Control the animation play state
-      },
-    });
-
-    // Animate the subtitle
-    gsap.from(".subtitle", {
-      opacity: 0,
-      y: -50,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".subtitle",
-        start: "top 80%", // Start animation when the subtitle is 80% from the top of the viewport
-        toggleActions: "play none none reverse", // Control the animation play state
-        scrub: true
-      },
-    });
-
-    // Animate the buttons
-    const buttons = gsap.utils.toArray(".tracking-button"); // Get all buttons with class 'tracking-button'
-
-    buttons.forEach((button) => {
-      gsap.from(button, {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        scrollTrigger: {
-          trigger: button,
-          start: "top 80%", // Start animation when the button is 80% from the top of the viewport
-          toggleActions: "play none none reverse", // Control the animation play state
-          scrub: true
-        },
-      });
-    });
-  }, []);
-
   return (
-    <div className="relative h-fit mt-20 border-2 border-gray-300 p-10 mx-auto w-[90%] rounded-md flex flex-col justify-center items-center text-center space-y-6">
-      <h2 className="title text-3xl md:text-8xl font-bold tracking-wider mb-4 text-black">Track Your Shipments</h2>
-      <p className="subtitle text-xl md:text-3xl font-medium mx-auto mb-8 text-black">
-        Choose a carrier below to track your shipment’s journey in real-time.
-      </p>
-      <div className="flex flex-col justify-center items-center space-y-4">
-        <a
-          href="https://www.ups.com/track"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="tracking-button flex items-center text-black text-lg font-semibold py-3 px-6 rounded-md shadow-lg transform transition duration-300 hover:-translate-y-1"
-        >
-          <Image
-            src="https://seeklogo.com/images/U/ups-united-parcel-service-logo-DC08EF8E0D-seeklogo.com.png"
-            alt="UPS Logo"
-            width={40}
-            height={40}
-            className="mr-4"
-          />
-          Track with UPS
-        </a>
-        <a
-          href="https://www.turkishcargo.com.tr/en/online-services/track-your-shipments"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="tracking-button flex items-center text-black text-lg font-semibold py-3 px-6 rounded-md shadow-lg transform transition duration-300 hover:-translate-y-1"
-        >
-          <Image
-            src="https://seeklogo.com/images/T/turkish-airlines-logo-25BACC2D0C-seeklogo.com.png"
-            alt="Turkish Airlines Cargo Logo"
-            width={40}
-            height={40}
-            className="mr-4"
-          />
-          Track with Turkish Airlines Cargo
-        </a>
+    <section className="bg-brand-50">
+      <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 py-24 md:px-8 md:py-32 lg:grid-cols-2 lg:gap-20">
+        <div data-reveal>
+          <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-brand-600 md:text-xs">
+            Live tracking
+          </p>
+          <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight text-brand-950 sm:text-4xl md:text-5xl">
+            Follow your shipment, every mile of the way.
+          </h2>
+          <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-600 md:text-lg">
+            Your cargo travels with trusted international carriers. Use their
+            tracking portals below to see your shipment&rsquo;s journey in real time.
+          </p>
+        </div>
+
+        <div className="grid gap-4" data-reveal-group>
+          {carriers.map(({ name, description, href, icon }) => (
+            <a
+              key={name}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-5 rounded-2xl border border-brand-100 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-xl hover:shadow-brand-950/[0.06] md:p-7"
+            >
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-xl text-brand-700 transition-colors duration-300 group-hover:bg-brand-900 group-hover:text-accent">
+                {icon}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-base font-semibold tracking-tight text-brand-950 md:text-lg">
+                  Track with {name}
+                </span>
+                <span className="mt-0.5 block text-sm text-slate-500">
+                  {description}
+                </span>
+              </span>
+              <HiArrowUpRight className="h-5 w-5 shrink-0 text-slate-400 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand-700" />
+            </a>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

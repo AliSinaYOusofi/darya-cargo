@@ -1,53 +1,126 @@
-import Image from 'next/image'
-import React from 'react'
-import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa'
-import Logo from '../public/images/WhatsApp Image 2024-10-13 at 13.36.48_3da1269d.jpg'
-import { usePathname } from 'next/navigation';
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { FaWhatsapp, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import Logo from "../public/images/logo.jpg";
+
+const navigation = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/contact", label: "Contact" },
+];
+
+const services = [
+  "Express Shipping",
+  "Air & Ocean Freight",
+  "Customs Clearance",
+  "Warehousing",
+];
 
 export default function Footer() {
-    const pathname = usePathname();
-    const currentYear = new Date().getFullYear();
-    return (
-        <footer className="mt-auto w-full py-10 px-4 sm:px-6 lg:px-8 mx-auto bg-[#ffc100] rounded-tr-lg rounded-tl-lg">
-            <div className="flex md:flex-row items-center justify-between flex-wrap flex-col gap-y-4">
-                <div>
-                    <a className="mx-auto text-xl font-semibold text-black focus:outline-none" href="/">
-                        <Image
-                            className="h-[40px] w-[40px] md:w-[60px] md:h-[60px] rounded-full"
-                            src={Logo}
-                            alt="Cargo Image"
-                            priority
-                        />
-                    </a>
-                </div>
+  const currentYear = new Date().getFullYear();
 
-                <ul className="text-center ">
-                    <li className="inline-block relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:content-['/'] before:text-gray-900">
-                        <a className={`relative ${pathname === "/" ? " underline" : ""}`} href="/">
-                            Home
-                        </a>
-                    </li>
-                    <li className="inline-block relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:content-['/'] before:text-gray-000">
-                        <a className={`relative ${pathname === "/about" ? " underline" : ""} `} href="/about">
-                            About Us
-                        </a>
-                    </li>
-                    <li className="inline-block relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:content-['/'] before:text-gray-900">
-                        <a className={`relative ${pathname === "/contact" ? " underline" : ""} `} href="/contact">
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </div>
+  return (
+    <footer className="bg-brand-950 text-white">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-2 md:px-8 md:py-20 lg:grid-cols-4">
+        <div className="lg:col-span-2">
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src={Logo}
+              alt="Darya Cargo logo"
+              className="h-11 w-11 rounded-full object-cover ring-1 ring-white/15"
+            />
+            <span className="flex flex-col leading-none">
+              <span className="text-lg font-bold tracking-tight">Darya Cargo</span>
+              <span className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-white/50">
+                دریا کارگو
+              </span>
+            </span>
+          </Link>
+          <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/55">
+            International shipping and logistics from Afghanistan to the world —
+            freight forwarding, customs clearance, packing and warehousing under
+            one roof.
+          </p>
+        </div>
 
-            {/* Divider */}
-            <div className="w-full border-t border-white my-4"></div>
-            
-            {/* Footer Text */}
-            <div className="text-center text-gray-600">
-                <p>&copy; daryacargo {currentYear}</p>
-                <p><a href="mailto:info@daryacargo.com" className="text-blue-500">info@daryacargo.com</a></p>
-            </div>
-        </footer>
-    )
+        <div>
+          <h3 className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
+            Navigate
+          </h3>
+          <ul className="mt-5 space-y-3">
+            {navigation.map(({ href, label }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="text-sm text-white/70 transition-colors hover:text-white"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <h3 className="mt-9 font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
+            Services
+          </h3>
+          <ul className="mt-5 space-y-3">
+            {services.map((service) => (
+              <li key={service} className="text-sm text-white/55">
+                {service}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
+            Get in touch
+          </h3>
+          <ul className="mt-5 space-y-4">
+            <li>
+              <a
+                href="mailto:info@daryacargo.com"
+                className="group flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-white"
+              >
+                <FaEnvelope className="h-4 w-4 text-white/40 transition-colors group-hover:text-accent" />
+                info@daryacargo.com
+              </a>
+            </li>
+            <li>
+              <a
+                href="tel:+93782868883"
+                className="group flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-white"
+              >
+                <FaPhoneAlt className="h-4 w-4 text-white/40 transition-colors group-hover:text-accent" />
+                +93 (782) 868-883
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://wa.me/93782868883"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-white"
+              >
+                <FaWhatsapp className="h-4 w-4 text-white/40 transition-colors group-hover:text-accent" />
+                WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-white/40 sm:flex-row md:px-8">
+          <p>© {currentYear} Darya Cargo. All rights reserved.</p>
+          <p className="font-mono uppercase tracking-[0.2em]">
+            Kabul · Afghanistan
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
 }

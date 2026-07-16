@@ -1,108 +1,134 @@
-"use client"
+"use client";
 
-import Image from "next/image";
-import Logo from '/public/images/logo.jpg';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import {
+  FaBox,
+  FaGlobe,
+  FaPlane,
+  FaShip,
+  FaShippingFast,
+  FaTruck,
+} from "react-icons/fa";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import Footer from "@/components/Footer";
-import { FaBox, FaGlobe, FaPlane, FaShip, FaShippingFast, FaTruck } from "react-icons/fa";
 import { ServiceCard } from "@/components/ServiceCard";
 import CargoStats from "@/components/Stats";
-import { useGSAP } from "@gsap/react";
-import TrackYourShipments from "@/components/TrackShipment";
-import AnimatedText from "@/components/RiverDarya";
 import MissionAndVision from "@/components/MissionVision";
+import TrackYourShipments from "@/components/TrackShipment";
+import BrandMarquee from "@/components/RiverDarya";
+import Footer from "@/components/Footer";
+
 gsap.registerPlugin(ScrollTrigger);
+
 const services = [
-  { icon: <FaShippingFast className="text-blue-600" />, header: 'Express Shipping', description: 'Fast and reliable express shipping for urgent deliveries worldwide.' },
-  { icon: <FaBox className="text-blue-600" />, header: 'Warehousing Solutions', description: 'Secure storage and inventory management for your cargo needs.' },
-  { icon: <FaPlane className="text-blue-600" />, header: 'Air Freight', description: 'Efficient air freight services for rapid international shipping.' },
-  { icon: <FaShip className="text-blue-600" />, header: 'Ocean Freight', description: 'Cost-effective and reliable ocean freight solutions for large shipments.' },
-  { icon: <FaTruck className="text-blue-600" />, header: 'Ground Transportation', description: 'Comprehensive ground transport services to meet regional delivery needs.' },
-  { icon: <FaGlobe className="text-blue-600" />, header: 'Customs Clearance', description: 'Professional customs clearance to ensure hassle-free import and export.' },
+  { icon: <FaShippingFast />, header: 'Express Shipping', description: 'Fast and reliable express shipping for urgent deliveries worldwide.' },
+  { icon: <FaBox />, header: 'Warehousing Solutions', description: 'Secure storage and inventory management for your cargo needs.' },
+  { icon: <FaPlane />, header: 'Air Freight', description: 'Efficient air freight services for rapid international shipping.' },
+  { icon: <FaShip />, header: 'Ocean Freight', description: 'Cost-effective and reliable ocean freight solutions for large shipments.' },
+  { icon: <FaTruck />, header: 'Ground Transportation', description: 'Comprehensive ground transport services to meet regional delivery needs.' },
+  { icon: <FaGlobe />, header: 'Customs Clearance', description: 'Professional customs clearance to ensure hassle-free import and export.' },
 ];
 
 export default function Home() {
-  const servicesRef = useRef(null);
-
-  useEffect(() => {
-    
-    const timeline1 = gsap.timeline();
-    const serviceRefCurr = servicesRef.current;
-
-    timeline1.fromTo(".logo", { opacity: 0, x: 100 }, { opacity: 1, x: 0, duration: 0.5 });
-    timeline1.fromTo(".background-image", { opacity: 0, y: -100 }, { opacity: 1, y: 0, duration: 0.5 });
-    timeline1.fromTo(".darya-cargo-text", { opacity: 0, y: 100 }, { opacity: 1, y: 0, duration: 0.5 });
-    timeline1.fromTo(".big-text", { opacity: 0, y: -100 }, { opacity: 1, y: 1, duration: 1 });
-    timeline1.fromTo(".coming-soon-text", { opacity: 0, y: -100 }, { opacity: 1, y: 1, duration: 1 });
-    
-  }, []);
-
   useGSAP(() => {
-    const boxes = gsap.utils.toArray(".service");
-    boxes.forEach((box) => {
-      gsap.from(box, {
+    const mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      // Section header: eyebrow and heading rise in sequence
+      gsap.from(".services > *", {
         opacity: 0,
-        y: 100,
+        y: 40,
         duration: 1,
+        ease: "power3.out",
+        stagger: 0.15,
         scrollTrigger: {
-          trigger: box,
-          start: "top bottom",
-          end: "bottom bottom",
-          scrub: true,
-          toggleActions: "play pause resume reset"
+          trigger: ".services",
+          start: "top 85%",
+          once: true,
         },
       });
-    });
 
-    gsap.from(".services", {
-      opacity: 0,
-      y: -150,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".services",
-        scrub: true,
-        toggleActions: "play none none reverse",
-      },
+      // Cards: staggered rise as each row enters the viewport
+      gsap.set(".service", { opacity: 0, y: 64, scale: 0.96 });
+      ScrollTrigger.batch(".service", {
+        start: "top 88%",
+        once: true,
+        onEnter: (batch) =>
+          gsap.to(batch, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1,
+            ease: "power3.out",
+            stagger: 0.12,
+            overwrite: true,
+          }),
+      });
+
+      // Shared reveal system used by the remaining sections: data-reveal
+      // fades an element up once; data-reveal-group staggers its children.
+      gsap.utils.toArray("[data-reveal]").forEach((el) => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 32,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 88%", once: true },
+        });
+      });
+
+      gsap.utils.toArray("[data-reveal-group]").forEach((group) => {
+        gsap.from(group.children, {
+          opacity: 0,
+          y: 32,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.1,
+          scrollTrigger: { trigger: group, start: "top 85%", once: true },
+        });
+      });
     });
   }, []);
 
   return (
-    <div className="font-[family-name:var(--font-geist-sans)]">
-      <main className="relative w-full h-screen">
-        <Navbar />
+    <>
+      <Navbar />
+      <main>
         <HeroSection />
 
-        <section className="py-12 w-[90%] mx-auto">
-          <div ref={servicesRef} className="container mx-auto px-4">
-            <h2  className="services text-3xl md:text-9xl font-semibold text-center mb-20 text-gray-800 mt-20">Services</h2>
-            <div className="grid service grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section id="services" className="scroll-mt-24 py-24 md:py-32">
+          <div className="mx-auto max-w-7xl px-5 md:px-8">
+            <div className="services mx-auto max-w-2xl text-center">
+              <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-brand-600 md:text-xs">
+                What we do
+              </p>
+              <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight text-brand-950 sm:text-4xl md:text-5xl">
+                Cargo services for every route.
+              </h2>
+            </div>
+            <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((service, index) => (
-                <div className="service">
+                <div key={service.header} className="service h-full">
                   <ServiceCard
-                    key={index}
                     icon={service.icon}
                     header={service.header}
                     description={service.description}
-                    
+                    index={index}
                   />
                 </div>
               ))}
             </div>
           </div>
         </section>
-        
-        <TrackYourShipments />
 
         <CargoStats />
         <MissionAndVision />
-
-        <AnimatedText />
-        <Footer />
+        <TrackYourShipments />
+        <BrandMarquee />
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
