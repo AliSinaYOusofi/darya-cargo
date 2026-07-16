@@ -1,23 +1,39 @@
-import React from 'react';
+import React from "react";
 
-export const ServiceCard = ({ icon, header, description }) => {
+export const ServiceCard = ({ icon, header, description, index = 0 }) => {
   return (
-    <div className="relative flex items-center bg-gradient-to-r from-[#064f47] to-[#075c52] text-white rounded-xl shadow-lg p-10 mx-auto transition duration-300 ease-in-out overflow-hidden group">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')] opacity-10 blur-sm"></div>
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-8 transition-all duration-500 ease-out hover:-translate-y-2 hover:border-brand-200 hover:shadow-2xl hover:shadow-brand-950/[0.08] md:p-10">
+      {/* Soft brand wash revealed on hover */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-50 via-white to-white opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      />
 
-      
-      <div className="relative z-10 flex-shrink-0 bg-white rounded-full p-4 text-black text-3xl shadow-md transition duration-300 ease-in-out group-hover:bg-[#0a6d61] group-hover:text-white">
-        {icon}
+      {/* Oversized ghost index */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -top-5 right-2 select-none font-mono text-[5.5rem] font-semibold leading-none tracking-tighter text-slate-100 transition-colors duration-500 group-hover:text-brand-100"
+      >
+        {String(index + 1).padStart(2, "0")}
+      </span>
+
+      <div className="relative">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-950 text-xl text-accent shadow-lg shadow-brand-950/15 transition-all duration-500 ease-out group-hover:scale-105 group-hover:bg-accent group-hover:text-brand-950">
+          {icon}
+        </div>
+
+        <h3 className="mt-8 text-xl font-semibold tracking-tight text-brand-950">
+          {header}
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-slate-600">
+          {description}
+        </p>
       </div>
 
-      
-      <div className="relative z-10 ml-6">
-        <h2 className="text-2xl font-bold transition duration-300 ease-in-out group-hover:text-teal-300">{header}</h2>
-        <p className="mt-2 text-sm opacity-90 transition duration-300 ease-in-out group-hover:text-gray-300">{description}</p>
+      {/* Accent rule that draws across on hover */}
+      <div className="relative mt-auto pt-8" aria-hidden>
+        <span className="block h-px w-10 bg-slate-200 transition-all duration-500 ease-out group-hover:w-full group-hover:bg-accent" />
       </div>
-
-      
-      <div className="absolute inset-0 bg-gradient-to-r from-[#075c52] to-[#064f47] opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out"></div>
     </div>
   );
 };

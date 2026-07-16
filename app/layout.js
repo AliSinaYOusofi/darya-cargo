@@ -52,7 +52,7 @@ export default function RootLayout({ children }) {
         <meta property="og:image" content="/public/images/logo.jpg" />
       </head>
 
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} bg-white font-sans text-slate-900 antialiased`}>
       
           {children}
 

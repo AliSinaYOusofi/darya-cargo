@@ -1,96 +1,76 @@
-import React from 'react';
-import ship from "../public/images/cargo.jpg"
-import plane from '../public/images/shipping.png'
-import containers from '../public/images/container-ship.gif'
-import Image from 'next/image';
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from '@gsap/react';
+"use client";
 
-gsap.registerPlugin(ScrollTrigger);
+import React from "react";
+import Image from "next/image";
+import containers from "../public/images/cargo logistic.jpg";
+
+const pillars = [
+  {
+    number: "01",
+    title: "Our mission",
+    body: "To provide reliable, secure and professional logistics services from Afghanistan to global destinations, offering a seamless experience for every client.",
+  },
+  {
+    number: "02",
+    title: "Our vision",
+    body: "To be Afghanistan's trusted name in international cargo logistics, known for quality service and customer satisfaction.",
+  },
+];
 
 const MissionAndVision = () => {
+  return (
+    <section className="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
+      <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+        <div className="relative order-last lg:order-first" data-reveal>
+          <div className="overflow-hidden rounded-3xl">
+            <Image
+              src={containers}
+              alt="Shipping containers stacked at a cargo terminal"
+              className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out hover:scale-[1.03] lg:aspect-[4/5]"
+              sizes="(min-width: 1024px) 44rem, 100vw"
+            />
+          </div>
+          <div className="absolute -bottom-5 left-6 rounded-2xl bg-accent px-6 py-4 shadow-xl shadow-brand-950/10 md:left-8">
+            <p className="font-mono text-2xl font-semibold tracking-tight text-brand-950">
+              Kabul → World
+            </p>
+            <p className="mt-0.5 text-xs font-medium uppercase tracking-[0.15em] text-brand-900/70">
+              Connecting Afghan trade
+            </p>
+          </div>
+        </div>
 
-    useGSAP(() => {
-        gsap.from(".title1", {
-          opacity: 0,
-          y: -150,
-          duration: 1,
-          scrollTrigger: {
-            trigger: ".title1",
-            scrub: true,
-            toggleActions: "play none none reverse",
-          },
-        });
-    
-        // Animate the subtitle
-        gsap.from(".subtitle1", {
-          opacity: 0,
-          x: -150,
-          duration: 1,
-          scrollTrigger: {
-            trigger: ".subtitle1",
-            
-            toggleActions: "play none none reverse", // Control the animation play state
-            scrub: true
-          },
-        });
+        <div>
+          <div data-reveal>
+            <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-brand-600 md:text-xs">
+              Who we are
+            </p>
+            <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight text-brand-950 sm:text-4xl md:text-5xl">
+              Built to connect Afghan trade with the world.
+            </h2>
+          </div>
 
-        gsap.from(".subtitle2", {
-          opacity: 0,
-          x: 150,
-          duration: 1,
-          scrollTrigger: {
-            trigger: ".subtitle2",
-            
-            toggleActions: "play none none reverse", // Control the animation play state
-            scrub: true
-          },
-        });
-        
-    }, []);
-
-    return (
-        <section className="relative h-fit mt-20 border-2 border-gray-300 p-10 mx-auto w-[90%] rounded-md flex flex-col justify-center items-center text-center space-y-6">
-            <div className=" w-20 absolute -top-8 -right-4 rotate-[45deg]">
-                <Image
-                    src={containers}
-                    alt="Moving Container Ship"
-                    width={160}
-                    height={160}
-                    className="object-contain"
-                />
-            </div>
-            <h1 className="title1 text-3xl md:text-8xl font-bold tracking-wider mb-4 text-black">
-                Mission and Vision
-            </h1>
-
-            <div className="w-full  max-w-3xl space-y-16 px-4 md:px-8">
-                <div className="text-center space-y-4 subtitle1">
-                    <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-gray-800">Mission</h2>
-                    <p className="text-lg md:text-xl leading-relaxed text-gray-600">
-                        To provide reliable, secure, and professional logistics services from Afghanistan to global
-                        destinations, offering a seamless experience for all clients.
-                    </p>
+          <div className="mt-12 space-y-10" data-reveal-group>
+            {pillars.map(({ number, title, body }) => (
+              <div key={number} className="flex gap-6">
+                <span className="font-mono text-sm font-semibold text-accent-dark">
+                  {number}
+                </span>
+                <div className="border-l border-slate-200 pl-6">
+                  <h3 className="text-lg font-semibold tracking-tight text-brand-950 md:text-xl">
+                    {title}
+                  </h3>
+                  <p className="mt-2.5 max-w-md text-base leading-relaxed text-slate-600">
+                    {body}
+                  </p>
                 </div>
-
-                <div className="text-center space-y-4 subtitle2">
-                    <div className="flex items-center justify-center gap-x-4 ">
-                        <h2 className="text-3xl  md:text-5xl font-semibold tracking-tight text-gray-800">Vision</h2>
-                        
-
-                    </div>
-                    <p className="text-lg md:text-xl leading-relaxed text-gray-600">
-                        To be Afghanistan’s trusted name in international cargo logistics, known for quality service and
-                        customer satisfaction.
-                    </p>
-                   
-
-                </div>
-            </div>
-            
-        </section>
-    );
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default MissionAndVision;
