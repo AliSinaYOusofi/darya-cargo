@@ -3,13 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { FaEnvelope, FaPhone, FaWhatsapp } from "react-icons/fa";
 import { HiArrowUpRight } from "react-icons/hi2";
 import warehouse from "../public/images/warhouse.jpg";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const methods = [
   {
@@ -56,29 +53,11 @@ export default function ContactContent() {
         stagger: 0.12,
         delay: 0.2,
       });
-
-      // Shared reveal system (same contract as the home page)
-      gsap.utils.toArray("[data-reveal]").forEach((el) => {
-        gsap.from(el, {
-          opacity: 0,
-          y: 32,
-          duration: 0.9,
-          ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 88%", once: true },
-        });
-      });
-
-      gsap.utils.toArray("[data-reveal-group]").forEach((group) => {
-        gsap.from(group.children, {
-          opacity: 0,
-          y: 32,
-          duration: 0.8,
-          ease: "power3.out",
-          stagger: 0.1,
-          scrollTrigger: { trigger: group, start: "top 85%", once: true },
-        });
-      });
     });
+
+    // StrictMode remounts twice: revert the matchMedia context or its
+    // half-finished tweens become the baseline for the second pass.
+    return () => mm.revert();
   }, []);
 
   return (
@@ -116,10 +95,7 @@ export default function ContactContent() {
       <section className="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
         <div className="grid gap-6 lg:grid-cols-5 lg:gap-8">
           {/* Office panel */}
-          <div
-            className="relative overflow-hidden rounded-3xl bg-brand-950 p-8 md:p-10 lg:col-span-2"
-            data-reveal
-          >
+          <div className="relative overflow-hidden rounded-3xl bg-brand-950 p-8 md:p-10 lg:col-span-2">
             <div
               aria-hidden
               className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand-500/20 blur-3xl"
@@ -147,7 +123,7 @@ export default function ContactContent() {
           </div>
 
           {/* Contact methods */}
-          <div className="flex flex-col gap-6 lg:col-span-3" data-reveal-group>
+          <div className="flex flex-col gap-6 lg:col-span-3">
             {methods.map(({ icon, label, value, note, href, external }) => (
               <a
                 key={label}
