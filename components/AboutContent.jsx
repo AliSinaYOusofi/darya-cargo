@@ -59,10 +59,12 @@ export default function AboutContent() {
 
       // Shared reveal system (same contract as the home page):
       // data-reveal fades an element up once; data-reveal-group staggers children.
+      // fromTo (not from) so end values are explicit and never read from a
+      // mid-transition computed style.
       gsap.utils.toArray("[data-reveal]").forEach((el) => {
-        gsap.from(el, {
-          opacity: 0,
-          y: 32,
+        gsap.fromTo(el, { opacity: 0, y: 32 }, {
+          opacity: 1,
+          y: 0,
           duration: 0.9,
           ease: "power3.out",
           scrollTrigger: { trigger: el, start: "top 88%", once: true },
@@ -70,9 +72,9 @@ export default function AboutContent() {
       });
 
       gsap.utils.toArray("[data-reveal-group]").forEach((group) => {
-        gsap.from(group.children, {
-          opacity: 0,
-          y: 32,
+        gsap.fromTo(group.children, { opacity: 0, y: 32 }, {
+          opacity: 1,
+          y: 0,
           duration: 0.8,
           ease: "power3.out",
           stagger: 0.1,
