@@ -38,26 +38,28 @@ const TrackYourShipments = () => {
 
         <div className="grid gap-4" data-reveal-group>
           {carriers.map(({ name, description, href, icon }) => (
-            <a
-              key={name}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-5 rounded-2xl border border-brand-100 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-xl hover:shadow-brand-950/[0.06] md:p-7"
-            >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-xl text-brand-700 transition-colors duration-300 group-hover:bg-brand-900 group-hover:text-accent">
-                {icon}
-              </span>
-              <span className="min-w-0 flex-1">
-                <span className="block text-base font-semibold tracking-tight text-brand-950 md:text-lg">
-                  Track with {name}
+            // Wrapper takes the GSAP reveal; the link keeps its CSS hover transition
+            <div key={name}>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-5 rounded-2xl border border-brand-100 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-xl hover:shadow-brand-950/[0.06] md:p-7"
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-xl text-brand-700 transition-colors duration-300 group-hover:bg-brand-900 group-hover:text-accent">
+                  {icon}
                 </span>
-                <span className="mt-0.5 block text-sm text-slate-500">
-                  {description}
+                <span className="min-w-0 flex-1">
+                  <span className="block text-base font-semibold tracking-tight text-brand-950 md:text-lg">
+                    Track with {name}
+                  </span>
+                  <span className="mt-0.5 block text-sm text-slate-500">
+                    {description}
+                  </span>
                 </span>
-              </span>
-              <HiArrowUpRight className="h-5 w-5 shrink-0 text-slate-400 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand-700" />
-            </a>
+                <HiArrowUpRight className="h-5 w-5 shrink-0 text-slate-400 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand-700" />
+              </a>
+            </div>
           ))}
         </div>
       </div>
